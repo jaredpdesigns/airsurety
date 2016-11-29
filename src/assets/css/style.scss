@@ -1,0 +1,269 @@
+---
+---
+
+$type-sans: 'Proxima Nova', sans-serif;
+$color-highlight: #007CE3;
+
+@import "start";
+
+// Vertical rythmn 
+
+* + {
+  p, h2 { @include margin(m); }
+  hr { @include margin(s); }
+}
+
+header[role="main"] > .wrapper:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  > * { @include bp(xs) { flex-grow: 1; } }
+  .logo svg {
+    @include bp(xs) {
+      height: rem(36);
+      width: auto;
+    }
+  }
+  nav[role="main"] { @include bp(xs) { @include margin(s); } }
+}
+
+header[role="main"].home {
+  background-size: cover;
+  background-position: center center;
+  .home__callout {
+    @include bp(s) {
+      min-height: 37.5%;
+      display: flex;
+      align-items: center;
+    }
+    h1 { text-shadow: 0 rem(2) rem(4) rgba($color-shade,0.25); }
+    .btn { @include margin(m); }
+  }
+}
+
+nav[role="main"] a {
+  @include inline;
+  @include type-s;
+  border-bottom: $border-s transparent;
+  color: $color-base-50;
+  @include bp(xs) { @include type-caps; }
+  &.is__active {
+    border-color: $color-base-25;
+    color: $color-base;
+  }
+  &:hover {
+    color: $color-highlight;
+    border-color: $color-highlight;
+  }
+  + a { @include margin(s,l); }
+}
+
+header[role="main"].home nav[role="main"] a {
+  color: rgba($color-tint,0.75);
+  &:hover, &.is__active {
+    color: $color-tint;
+    border-color: $color-tint;
+  }
+}
+
+footer[role="main"] {
+  border-top: $border-s $color-base-12;
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  small {
+    @include bp(xs) {
+      @include margin(s);
+      order: 2;
+      flex-grow: 1;
+    }
+  }
+}
+
+nav[role="secondary"] a {
+  @include inline;
+  @include type-xs;
+  @include type-caps;
+  border-bottom: $border-s transparent;
+  color: $color-base-38;
+  &:hover {
+    color: $color-base-50;
+    border-color: $color-base-25;
+  }
+  + a { @include margin(xs,l); }
+}
+
+.is__hidden { display: none; }
+
+.page {
+  &__header {
+    text-shadow: 0 rem(2) rem(4) rgba($color-shade,0.25);
+    border-top: $border-s;
+    border-bottom: $border-s;
+  }
+  &__content {
+    h2 { color: $color-base-50; }
+  }
+}
+
+.buy {
+  nav { display: flex; }
+  &__tab {
+    @include type-center;
+    color: $color-base-38;
+    cursor: pointer;
+    border-color: transparent;
+    border-bottom: $border-s $color-base-12;
+    font-weight: bold;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-s;
+    transition: color 0.375s ease-in;
+    &:hover { color: $color-base-50; }
+    &.is__active {
+      background-color: $color-tint;
+      color: $color-highlight;
+      border-bottom: none;
+      border-top: $border-s;
+      border-left: $border-s;
+      border-right: $border-s;
+      border-color: $color-base-12;
+      &:hover { color: $color-highlight-dark; }
+    }
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 { color: $color-base-50; }
+    a {
+      @include inline;
+      color: $color-highlight;
+      &:hover { color: $color-highlight-dark; }
+      svg { @include smooth; }
+      &.is__action {
+        font-weight: 600;
+        svg {
+          &:first-child { margin-right: rem(8); }
+          &:last-child { margin-left: rem(8); }
+        }
+      }
+    }
+    * + & { margin-top: $space-m; }
+  }
+  &__content {
+    background-color: $color-tint;
+    border: $border-s $color-base-12;
+    border-top-width: 0;
+    padding: $space-m;
+    box-shadow: 0 rem(16) rem(32) rem(-16) rgba($color-shade,0.25);
+    .buy__footer + & { border-top-width: rem(1); }
+    &.is__extra {
+      background-color: $color-highlight-5;
+    }
+  }
+  &__footer {
+    @include padding(s);
+    color: $color-base-38;
+  }
+  &__price {
+    @include type-l;
+    font-weight: normal;
+  }
+  &__submit {
+    @include smooth;
+    @include type-m;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-s;
+    background-color: $color-highlight;
+    background-image: linear-gradient(to bottom, rgba($color-highlight,0), $color-highlight-dark);
+    color: $color-tint;
+    box-shadow: 0 rem(16) rem(32) rem(-16) rgba($color-shade,0.5);
+    width: 100%;
+    &:hover { background-color: $color-highlight-dark; }
+    svg { margin-right: $space-s; }
+  }
+}
+
+.team__member {
+  @include margin(m);
+  display: flex;
+  @include bp(xs) { flex-wrap: wrap; }
+  &--img {
+    flex: 0 0 auto;
+    margin: 0 auto;
+    img {
+      height: rem(120);
+      width: rem(120);
+      background-color: $color-base-5;
+      border: $border-s $color-base-12;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+  &--content {
+    flex-grow: 1;
+    @include bp(xs) { @include margin(s); }
+    @include bp(s) { @include padding(m,l); }
+    p { @include margin(xs); }
+  }
+}
+
+.split {
+  .wrapper {
+    @include bp(s) {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &__img {
+    @include bp(s) {
+      flex-basis: $grid-1-2;
+      order: 2;
+    }
+    img {
+      @include bp(s) {
+        box-shadow: 0 rem(16) rem(32) rem(-16) rgba($color-shade,0.5);
+      }
+    }
+  }
+  &__content {
+    @include bp(xs) { @include margin(m); }
+    @include bp(s) {
+      @include padding(m);
+      padding-left: 0;
+      flex-basis: $grid-1-2;
+    }
+    text-shadow: 0 rem(2) rem(4) rgba($color-shade,0.25);
+  }
+}
+
+.features {
+  @include bp(s) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.feature__item {
+  @include padding(m);
+  @include bp(s) { width: $grid-1-2; }
+  @include bp(m) { width: $grid-1-3; }
+  &--img {
+    padding: $space-m;
+    background-color: $color-highlight-12;
+    border-radius: 50%;
+    display: inline-block;
+    img { height: rem(88); }
+  }
+  * + * { @include margin(s); }
+}

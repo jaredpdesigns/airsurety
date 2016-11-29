@@ -1,0 +1,388 @@
+// VARIABLES 
+// Anything with a '!default' definition proceeding the value can be easily overriden by declaring a new value in your .scss file that imports 'pasta.scss'.
+
+$type-xxs: 12 !default;
+$type-xs: 14 !default;
+$type-s: 16 !default;
+$type-m: 18 !default;
+$type-ml: 20 !default;
+$type-l: 22 !default;
+$type-xl: 24 !default;
+$type-xxl: 30 !default;
+
+$type-bl-xs: 12 !default;
+$type-bl-s: 16 !default;
+$type-bl-m: 24 !default;
+$type-bl-l: 36 !default;
+$type-bl-xl: 48 !default;
+
+$type-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !default;
+$type-serif: "Georgia", "Times", "Times New Roman", serif !default;
+$type-mono: "Consolas", "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Monaco", "Courier New", "Courier", monospace !default;
+
+$color-tint: white !default;
+$color-shade: black !default;
+
+@function tint($color, $percent) {
+  @return mix($color-tint, $color, $percent);
+}
+@function shade($color, $percent) {
+  @return mix($color-shade, $color, $percent);
+}
+
+$color-highlight: #E73C4E !default;
+$color-base: shade($color-highlight,62%) !default;
+
+$color-highlight-75: tint($color-highlight,25%);
+$color-highlight-62: tint($color-highlight,38%);
+$color-highlight-50: tint($color-highlight,50%);
+$color-highlight-38: tint($color-highlight,62%);
+$color-highlight-25: tint($color-highlight,75%);
+$color-highlight-12: tint($color-highlight,88%);
+$color-highlight-5:  tint($color-highlight,95%);
+$color-highlight-dark: shade($color-highlight,25%);
+
+$color-base-75: tint($color-base,25%);
+$color-base-62: tint($color-base,38%);
+$color-base-50: tint($color-base,50%);
+$color-base-38: tint($color-base,62%);
+$color-base-25: tint($color-base,75%);
+$color-base-12: tint($color-base,88%);
+$color-base-5:  tint($color-base,95%);
+$color-base-dark: shade($color-base,25%);
+
+@function rem($size) {
+  $size-rem: $size/16;
+  @return #{$size-rem}rem;
+}
+
+$space-xxs: rem(4) !default;
+$space-xs: rem(8) !default;
+$space-s: rem(16) !default;
+$space-m: rem(24) !default;
+$space-l: rem(32) !default;
+$space-xl: rem(64) !default;
+$space-xxl: rem(96) !default;
+
+$grid-1-6: percentage(1/6);
+$grid-1-4: percentage(1/4);
+$grid-1-3: percentage(1/3);
+$grid-1-2: percentage(1/2);
+$grid-2-3: percentage(2/3);
+$grid-3-4: percentage(3/4);
+
+$border-s: rem(1) solid !default;
+$border-m: $space-xxs solid !default;
+$border-l: $space-xs solid !default;
+
+// MIXINS
+
+// All breakpoints are modeled after common screens resolutions subtracting an additional 16 pixels so they affect the object slightly before they reach the common size (for example 768-16 = 752).
+
+@mixin bp($point) {
+	@if $point == xs { @media (min-width: rem(16)) and (max-width: rem(736)) { @content; } }
+	@else if $point == xsl { @media (min-width: rem(464)) { @content; } }
+	@else if $point == s { @media (min-width: rem(752)) { @content; } }
+	@else if $point == m { @media (min-width: rem(1008)) { @content; } }
+	@else if $point == l { @media (min-width: rem(1264)) { @content; } }
+	@else if $point == ml { @media (min-width: rem(1424)) { @content; } }
+	@else if $point == xl { @media (min-width: rem(1584)) { @content; } }
+	@else if $point == xxl { @media (min-width: rem(1616)) { @content; } }
+}
+
+// This mixin takes the argument of a unitless pixel value combined with common baseline sizes defined in 'Variables' to make a line of text the full value of the baseline unit (for example 24 = baseline unit / 16 = pixel value = 1.5 lineheight or 24 pixels tall).
+
+@mixin type($px,$lh: $type-bl-m) {
+  font-size: rem($px);
+  line-height: ($lh)/($px);
+}
+
+// All type mixins provide built-in responsive sizing using the values defined in 'Variables' — the idea is that a user can have type scale up or down depending on device sizes, making reading more enjoyable.
+
+@mixin type-xxs {
+	@include type($type-xxs,$type-bl-s);
+}
+
+@mixin type-xs {
+	@include type($type-xs);
+}
+@mixin type-s {
+	@include type($type-s);
+	@include bp(xs) { @include type($type-xs); }
+	@include bp(xl) { @include type($type-m); }
+}
+@mixin type-m	 {
+  @include type($type-m, $type-bl-l);
+  @include bp(xs) { @include type($type-s); }
+  @include bp(xl) { @include type($type-ml,$type-bl-l); }
+}
+@mixin type-ml	 {
+  @include type($type-ml);
+  @include bp(xs) { @include type($type-m); }
+  @include bp(xl) { @include type($type-l,$type-bl-l); }
+}
+@mixin type-l {
+	@include type($type-l,$type-bl-l);
+	@include bp(xs) { @include type($type-ml,$type-bl-l); }
+	@include bp(xl) { @include type($type-xl,$type-bl-l); }
+}
+@mixin type-xl {
+	@include type($type-xl,$type-bl-l);
+	@include bp(xs) { @include type($type-l,$type-bl-l); }
+	@include bp(xl) { @include type($type-xxl,$type-bl-xl); }
+}
+
+// A slew of helper mixins also scoped to individual classes for non-SASS in the '_eggs-base.scss' file.
+
+@mixin type-sans { font-family: $type-sans; }
+
+@mixin type-serif { font-family: $type-serif; }
+
+@mixin type-mono { font-family: $type-mono; }
+
+@mixin type-bold { font-weight: bold; }
+
+@mixin type-italic { font-style: italic; }
+
+@mixin type-caps { text-transform: uppercase; }
+
+@mixin type-left { text-align: left; }
+
+@mixin type-center {
+  text-align: center;
+  img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@mixin type-right { text-align: right; }
+
+@mixin type-legible {
+  @include bp(m) {
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include bp(xl) { max-width: 62.5%; }
+}
+
+// Timing functions help things feel 'good'.
+
+@mixin smooth      { transition: all 0.375s ease-in; }
+@mixin smooth-pop  { transition: all 0.5s cubic-bezier(0.5, 0.1, 0, 1.2); }
+
+
+// Padding helpers.
+
+@mixin padding($size, $side: all) {
+	@if $size == xs and $side == all {
+  	  padding: $space-xs;
+  	  @include bp(xl) { padding: $space-s; }
+  }
+  @else if $size == s and $side == all {
+  	  padding: $space-s;
+  	  @include bp(xl) { padding: $space-m; }
+  }
+  @else if $size == m and $side == all {
+  	  padding: $space-m;
+  	  @include bp(xl) { padding: $space-l; }
+  }
+  @else if $size == l and $side == all {
+  	  padding: $space-l;
+  	  @include bp(xl) { padding: $space-xl; }
+  }
+  @else if $size == xl and $side == all {
+  	  padding: $space-xl;
+  	  @include bp(xl) { padding: $space-xxl; }
+  }
+	@else if $size == xs and $side == t {
+  	  padding-top: $space-xs;
+  	  @include bp(xl) { padding-top: $space-s; }
+  }
+  @else if $size == s and $side == t {
+  	  padding-top: $space-s;
+  	  @include bp(xl) { padding-top: $space-m; }
+  }
+  @else if $size == m and $side == t {
+  	  padding-top: $space-m;
+  	  @include bp(xl) { padding-top: $space-l; }
+  }
+  @else if $size == l and $side == t {
+  	  padding-top: $space-l;
+  	  @include bp(xl) { padding-top: $space-xl; }
+  }
+  @else if $size == xl and $side == t {
+  	  padding-top: $space-xl;
+  	  @include bp(xl) { padding-top: $space-xxl; }
+  }
+  @else if $size == xs and $side == b {
+  	  padding-bottom: $space-xs;
+  	  @include bp(xl) { padding-bottom: $space-s; }
+  }
+  @else if $size == s and $side == b {
+  	  padding-bottom: $space-s;
+  	  @include bp(xl) { padding-bottom: $space-m; }
+  }
+  @else if $size == m and $side == b {
+  	  padding-bottom: $space-m;
+  	  @include bp(xl) { padding-bottom: $space-l; }
+  }
+  @else if $size == l and $side == b {
+  	  padding-bottom: $space-l;
+  	  @include bp(xl) { padding-bottom: $space-xl; }
+  }
+  @else if $size == xl and $side == b {
+  	  padding-bottom: $space-xl;
+  	  @include bp(xl) { padding-bottom: $space-xxl; }
+  }
+  @else if $size == xs and $side == l {
+  	  padding-left: $space-xs;
+  	  @include bp(xl) { padding-left: $space-s; }
+  }
+  @else if $size == s and $side == l {
+  	  padding-left: $space-s;
+  	  @include bp(xl) { padding-left: $space-m; }
+  }
+  @else if $size == m and $side == l {
+  	  padding-left: $space-m;
+  	  @include bp(xl) { padding-left: $space-l; }
+  }
+  @else if $size == l and $side == l {
+  	  padding-left: $space-l;
+  	  @include bp(xl) { padding-left: $space-xl; }
+  }
+  @else if $size == xl and $side == l {
+  	  padding-left: $space-xl;
+  	  @include bp(xl) { padding-left: $space-xxl; }
+  }
+  @else if $size == xs and $side == r {
+  	  padding-right: $space-xs;
+  	  @include bp(xl) { padding-right: $space-s; }
+  }
+  @else if $size == s and $side == r {
+  	  padding-right: $space-s;
+  	  @include bp(xl) { padding-right: $space-m; }
+  }
+  @else if $size == m and $side == r {
+  	  padding-right: $space-m;
+  	  @include bp(xl) { padding-right: $space-l; }
+  }
+  @else if $size == l and $side == r {
+  	  padding-right: $space-l;
+  	  @include bp(xl) { padding-right: $space-xl; }
+  }
+  @else if $size == xl and $side == r {
+  	  padding-right: $space-xl;
+  	  @include bp(xl) { padding-right: $space-xxl; }
+  }
+}
+
+// Margin helpers.
+
+@mixin margin($size, $side: t) {
+	@if $size == xs and $side == t {
+  	  margin-top: $space-xs;
+  	  @include bp(xl) { margin-top: $space-s; }
+  }
+  @else if $size == s and $side == t {
+  	  margin-top: $space-s;
+  	  @include bp(xl) { margin-top: $space-m; }
+  }
+  @else if $size == m and $side == t {
+  	  margin-top: $space-m;
+  	  @include bp(xl) { margin-top: $space-l; }
+  }
+  @else if $size == l and $side == t {
+  	  margin-top: $space-l;
+  	  @include bp(xl) { margin-top: $space-xl; }
+  }
+  @else if $size == xl and $side == t {
+  	  margin-top: $space-xl;
+  	  @include bp(xl) { margin-top: $space-xxl; }
+  }
+  @else if $size == xs and $side == b {
+  	  margin-bottom: $space-xs;
+  	  @include bp(xl) { margin-bottom: $space-s; }
+  }
+  @else if $size == s and $side == b {
+  	  margin-bottom: $space-s;
+  	  @include bp(xl) { margin-bottom: $space-m; }
+  }
+  @else if $size == m and $side == b {
+  	  margin-bottom: $space-m;
+  	  @include bp(xl) { margin-bottom: $space-l; }
+  }
+  @else if $size == l and $side == b {
+  	  margin-bottom: $space-l;
+  	  @include bp(xl) { margin-bottom: $space-xl; }
+  }
+  @else if $size == xl and $side == b {
+  	  margin-bottom: $space-xl;
+  	  @include bp(xl) { margin-bottom: $space-xxl; }
+  }
+  @else if $size == xs and $side == l {
+  	  margin-left: $space-xs;
+  	  @include bp(xl) { margin-left: $space-s; }
+  }
+  @else if $size == s and $side == l {
+  	  margin-left: $space-s;
+  	  @include bp(xl) { margin-left: $space-m; }
+  }
+  @else if $size == m and $side == l {
+  	  margin-left: $space-m;
+  	  @include bp(xl) { margin-left: $space-l; }
+  }
+  @else if $size == l and $side == l {
+  	  margin-left: $space-l;
+  	  @include bp(xl) { margin-left: $space-xl; }
+  }
+  @else if $size == xl and $side == l {
+  	  margin-left: $space-xl;
+  	  @include bp(xl) { margin-left: $space-xxl; }
+  }
+  @else if $size == xs and $side == r {
+  	  margin-right: $space-xs;
+  	  @include bp(xl) { margin-right: $space-s; }
+  }
+  @else if $size == s and $side == r {
+  	  margin-right: $space-s;
+  	  @include bp(xl) { margin-right: $space-m; }
+  }
+  @else if $size == m and $side == r {
+  	  margin-right: $space-m;
+  	  @include bp(xl) { margin-right: $space-l; }
+  }
+  @else if $size == l and $side == r {
+  	  margin-right: $space-l;
+  	  @include bp(xl) { margin-right: $space-xl; }
+  }
+  @else if $size == xl and $side == r {
+  	  margin-right: $space-xl;
+  	  @include bp(xl) { margin-right: $space-xxl; }
+  }
+}
+
+// Positioning helpers.
+
+@mixin fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin center-vertical {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+@mixin inline {
+  display: inline-flex;
+  align-items: center;
+}

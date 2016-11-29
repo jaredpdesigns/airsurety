@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | prepend: site.baseurl }}">
+</head>
+<body>
+{% if page.url == '/' %}
+<header role="main" class="home" style="background-image: url('{{ site.baseurl }}/assets/img/header-background.jpg')">
+  <section class="wrapper wrapper--short">
+    <a href="{{ site.baseurl }}/" class="logo type__align--center color__type--white">{% include svg/logo.svg %}</a>
+    <nav role="main" class="type__align--center">
+      <a href="{{ site.baseurl }}/#how-it-works">How It Works</a>
+      <a>Packages</a>
+      <a>Partners</a>
+      <a>Corporate</a>
+      <a>Login</a>
+    </nav>
+  </section>
+  <section class="home__callout">
+    <section class="wrapper wrapper--fluffy type__align--center color__type--white">
+      <h1>Instant coverage for airplane flights!</h1>
+      <a href="{{ site.baseurl }}/buy" class="btn">Get Coverage</a>
+      <a class="btn">Learn More</a>
+    </section>
+  </section>
+</header>
+{% else %}
+<header role="main">
+  <section class="wrapper wrapper--short">
+    <a href="{{ site.baseurl }}/" class="logo type__align--center type__color--base">{% include svg/logo.svg %}</a>
+    <nav role="main" class="type__align--center">
+      <a>How It Works</a>
+      <a>Packages</a>
+      <a>Partners</a>
+      <a>Corporate</a>
+      <a>Login</a>
+    </nav>
+  </section>
+</header>
+{% endif %}
+<main>

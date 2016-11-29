@@ -1,0 +1,147 @@
+// Global Reset
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  height: 100%;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  vertical-align: baseline;
+}
+
+img {
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, audio, canvas, video, pre {
+  display: block;
+}
+
+canvas {
+  -ms-touch-action: double-tap-zoom;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  border: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+// Forms
+
+input[type="email"], input[type="number"], input[type="password"],
+input[type="search"], input[type="tel"], input[type="text"], input[type="url"],
+input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"],
+input[type="month"], input[type="time"], input[type="week"], select, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-border-radius: 0;
+  font-family: inherit;
+  display: block;
+  border: inherit;
+  &:focus { outline: 0; }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+
+label, input, button, select, textarea {
+  font-weight: inherit;
+  color: inherit;
+  width: 100%;
+  max-width: 100%;
+  border: inherit;
+  outline: 0;
+}
+
+label {
+  display: block;
+  width: auto;
+}
+
+select {
+  outline: 0;
+  background: transparent;
+  width: 100%;
+}
+
+input[type="file"], input[type="image"], input[type="submit"],
+button[type="submit"], input[type="reset"], input[type="button"],
+input[type="radio"], input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  display: inline-block;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  margin-right: inherit;
+}
+
+input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly] {
+  cursor: not-allowed;
+}
+
+input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="radio"][readonly], input[type="checkbox"][readonly] {
+  background-color: transparent;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"], button[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  background: none;
+  width: auto;
+}
+
+button[disabled], input[disabled] {
+  cursor: default;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner, select::-moz-focus-inner, a::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}

@@ -1,0 +1,198 @@
+---
+layout: default
+---
+
+<form id="buy__form" class="wrapper buy" action="" method="post">
+  <nav>
+    <section id="grab-go" class="buy__tab is__active">Grab & Go</section>
+    <section id="frequent-flyer" class="buy__tab">Frequent Flyer</section>
+  </nav>
+  <section class="buy__content">
+    <header class="buy__header">
+      <h3>My Details</h3>
+      <a id="add__guests" class="is__action can__add">
+        {% include svg/add.svg %}
+        Add Guests*
+      </a>
+    </header>
+    <section id="details" class="fieldset__group">
+      <fieldset class="fieldset__group--item">
+        <label for="name"><h5>Name</h5></label>
+        <input name="name" for="name" type="text" autocomplete="cc-name" placeholder="ex. Smart Traveler" required>
+      </fieldset>
+      <fieldset class="fieldset__group--item">
+        <label for="email"><h5>Email Address</h5></label>
+        <input name="email" for="email" type="email" placeholder="ex. name@email.com" required>
+      </fieldset>
+      <fieldset class="fieldset__group--item">
+        <label for="bday"><h5>Date of Birth</h5></label>
+        <section class="fancy__field">
+          <input name="bday" for="bday" type="date" autocomplete="bday" placeholder="MM/DD/YYYY" required>
+          {% include svg/date.svg %}
+        </section>
+      </fieldset>
+      <fieldset class="fieldset__group--item">
+        <label for="coverage-amount"><h5>Coverage Amount *</h5></label>
+        <section class="form__group">
+          <section class="form__group--item fancy__field">
+            <select name="coverage-amount" for="coverage-amount">
+              <option selected="selected">$250,000</option>
+              <option>$1,000,000</option>
+            </select>
+            {% include svg/select.svg %}
+          </section>
+        </section>
+      </fieldset>
+    </section>
+  </section>
+  <section id="guests" class="buy__content  is__extra is__hidden">
+    <header class="buy__header">
+      <h3>Guests</h3>
+      <a class="can__remove">{% include svg/cancel.svg %}</a>
+    </header>
+    <section class="fieldset__group is__guest">
+      <fieldset class="fieldset__group--item">
+        <label for="guest-name"><h5>Guest’s Name</h5></label>
+        <input name="guest-name" for="guest-name" type="text" placeholder="ex. Lovely Companion">
+      </fieldset>
+      <fieldset class="fieldset__group--item">
+        <label for="guest-email"><h5>Guest’s Email Address</h5></label>
+        <input name="guest-email" for="guest-email" type="email" placeholder="ex. name@email.com">
+      </fieldset>
+      <fieldset class="fieldset__group--item">
+        <label for="guest-bday"><h5>Date of Birth</h5></label>
+        <section class="fancy__field">
+          <input name="guest-bday" for="guest-bday" type="date" placeholder="MM/DD/YYYY">
+          {% include svg/date.svg %}
+        </section>
+      </fieldset>
+      <fieldset class="fieldset__group--item">
+        <label for="coverage-amount"><h5>Coverage Amount *</h5></label>
+        <section class="form__group">
+          <section class="form__group--item fancy__field">
+            <select name="coverage-amount" for="coverage-amount">
+              <option selected="selected">$250,000</option>
+              <option>$1,000,000</option>
+            </select>
+            {% include svg/select.svg %}
+          </section>
+        </section>
+      </fieldset>
+    </section>
+  </section>
+  <section id="flights" class="buy__content ">
+    <header class="buy__header">
+      <h3>Flights</h3>
+      <a id="add__flights" class="is__action can__add">
+        {% include svg/add.svg %}
+        Add Flights*
+      </a>
+    </header>
+    <section class="fieldset__group">
+      <fieldset class="fieldset__group--item is__small">
+        <label for="flight-name"><h5>Flight Name</h5></label>
+        <section class="fancy__field">
+          <input name="flight-name" for="flight-name" type="text" placeholder="ex. AA1818" required>
+          {% include svg/info-dark.svg %}
+        </section>
+      </fieldset>
+      <fieldset class="fieldset__group--item is__small">
+        <label for="flight-date"><h5>Flight Date</h5></label>
+        <section class="fancy__field">
+          <input name="flight-date" for="flight-date" type="date" placeholder="MM/DD/YYYY" required>
+          {% include svg/date.svg %}
+        </section>
+      </fieldset>
+      <fieldset class="fieldset__group--item is__small">
+        <label for="flight-type"><h5>Flight Type *</h5></label>
+        <section class="form__group">
+          <section class="form__group--item fancy__field">
+            <select name="flight-type" for="flight-type">
+              <option selected="selected">USA Only</option>
+              <option>Worldwide</option>
+            </select>
+            {% include svg/select.svg %}
+          </section>
+        </section>
+      </fieldset>
+    </section>
+  </section>
+  <section id="additional-flights" class="buy__content is__extra  is__hidden">
+    <header class="buy__header">
+      <h3>Additional Flights</h3>
+      <a class="can__remove">{% include svg/cancel.svg %}</a>
+    </header>
+    <section class="fieldset__group">
+      <fieldset class="fieldset__group--item is__small">
+        <label for="flight-name"><h5>Flight Name</h5></label>
+        <section class="fancy__field">
+          <input name="flight-name" for="flight-name" type="text" placeholder="ex. AA1818">
+          {% include svg/info-dark.svg %}
+        </section>
+      </fieldset>
+      <fieldset class="fieldset__group--item is__small">
+        <label for="flight-date"><h5>Flight Date</h5></label>
+        <section class="fancy__field">
+          <input name="flight-date" for="flight-date" type="date" placeholder="MM/DD/YYYY">
+          {% include svg/date.svg %}
+        </section>
+      </fieldset>
+      <fieldset class="fieldset__group--item is__small">
+        <label for="flight-type"><h5>Flight Type *</h5></label>
+        <section class="form__group">
+          <section class="form__group--item fancy__field">
+            <select name="flight-type" for="flight-type">
+              <option selected="selected">USA Only</option>
+              <option>Worldwide</option>
+            </select>
+            {% include svg/select.svg %}
+          </section>
+        </section>
+      </fieldset>
+    </section>
+  </section>
+  <section class="buy__footer type__align--center">
+    <p class="type__align--legible"><small>All options with an asterick (*) will change the overall price of your coverage, see our <a href="#">FAQs</a> for more information on specific rates</small></p>
+  </section>
+  <section class="buy__content">
+    <header class="buy__header">
+      <h3>Payment</h3>
+      <a class="buy__price is__action">
+        $1.99
+        {% include svg/info-dark.svg %}
+      </a>
+    </header>
+    <section class="fieldset__group">
+      <fieldset class="fieldset__group--item is__full">
+        <label for="cc-number"><h5>Credit Card Number</h5></label>
+        <input name="cc-number" for="cc-number" type="number" autocomplete="cc-number" placeholder="ex. 1234 5678 9876 5432" required>
+      </fieldset>
+      <fieldset class="fieldset__group--item is__big">
+        <label><h5>Expiration Date</h5></label>
+        <section class="form__group">
+          <section class="form__group--item">
+            <input name="cc-expiration-m" type="number" autocomplete="cc-exp-month" placeholder="MM" required>
+          </section>
+          <section class="form__group--item">
+            <input name="cc-expiration-y" type="number" autocomplete="cc-exp-year" placeholder="YYYY" required>
+          </section>
+        </section>
+      </fieldset>
+      <fieldset class="fieldset__group--item is__small">
+        <label for="cc-cvc"><h5>CVC</h5></label>
+        <input name="cc-cvc" for="cc-cvc" type="number" autocomplete="cc-csc" placeholder="ex. 1234" required>
+      </fieldset>
+      <fieldset class="fieldset__group--item">
+        <label for="broker-code"><h5>Broker Code</h5></label>
+        <section class="fancy__field">
+          <input name="broker-code" for="broker-code" type="number" placeholder="ex. 123456">
+          {% include svg/info-dark.svg %}
+        </section>
+      </fieldset>
+    </section>
+  </section>
+  <button class="buy__submit">{% include svg/checkmark.svg %} Pay Now</button>
+  <section class="buy__footer type__align--center">
+    <p class="type__align--legible"><small>By clicking "Pay Now" you agree with the <a href="#">Terms of Service</a></small></p>
+  </section>
+</form>

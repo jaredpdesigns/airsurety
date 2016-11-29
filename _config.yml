@@ -1,0 +1,28 @@
+title: 'Airsurety'
+baseurl: "/airsurety"
+url: "http://jaredpdesigns.github.io/airsurety"
+keep_files: [.git, "CNAME"]
+exclude: ["README.md"]
+source: src
+destination: docs
+port: 4001
+
+# Build settings
+markdown: kramdown
+
+sass:
+  sass_dir: assets/css/pasta
+  style: compressed
+
+highlighter: none
+
+# Markdown Processors
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  
+gems:
+- jekyll-autoprefixer

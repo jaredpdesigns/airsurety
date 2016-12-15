@@ -2,7 +2,7 @@
   <figure class="team__member--img"><img class="lazy" data-src="{{ site.baseurl}}/assets/img/{{ include.team__member--img }}"></figure>
   <figcaption class="team__member--content">
     <h3 class="color__type--highlight">{{ include.team__member--name }}</h3>
-    {% if include.team__member--title %}<p class="color__type--base-50"><em>{{ include.team__member--title }}</em></p>{% endif %}
+    {% if include.team__member--title %}<p class="team__member--title color__type--base-50"><em>{{ include.team__member--title }}</em></p>{% endif %}
     {% assign descriptions = include.team__member--description | split: ' # ' %}
     {% for description in descriptions %}
     <p>{{ description }}</p>

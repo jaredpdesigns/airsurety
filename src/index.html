@@ -17,22 +17,22 @@ layout: default
 </section>
 <section id="how-it-works" class="wrapper type__align--center">
   <header>
-    <h2 class="type__style--caps color__type--highlight">How It Works</h2>
+    <h2 class="type__style--caps color__type--base-50">How It Works</h2>
     <p class="type__align--legible">Choose a coverage option ($250K–$3M). Enter your name, email address and payment info. Receive an official PDF policy document via email. <strong>That’s it, you and your loved ones are covered.</strong></p>
   </header>
   <section class="features">
     <article class="feature__item">
-      <h3 class="color__type--base-50">Simple</h3>
+      <h3 class="color__type--highlight">Simple</h3>
       <figure class="feature__item--img"><img class="lazy" data-src="{{ site.baseurl }}/assets/img/simple.svg"></figure>
       <p class="color__type--base-62">3 coverage options. We worked really hard to make this a no brainer.</p>
     </article>
     <article class="feature__item">
-      <h3 class="color__type--base-50">Fast</h3>
+      <h3 class="color__type--highlight">Fast</h3>
       <figure class="feature__item--img"><img class="lazy" data-src="{{ site.baseurl }}/assets/img/fast.svg"></figure>
-      <p class="color__type--base-62">0 pieces of paper to sign or fax…Duh. It’s 2017, insurance should be click, click, done.</p>
+      <p class="color__type--base-62">0 pieces of paper to sign or fax…Duh. It’s {{ site.time | date: '%Y' }}, insurance should be click, click, done.</p>
     </article>
     <article class="feature__item">
-      <h3 class="color__type--base-50">Secure</h3>
+      <h3 class="color__type--highlight">Secure</h3>
       <figure class="feature__item--img"><img class="lazy" data-src="{{ site.baseurl }}/assets/img/secure.svg"></figure>
       <p class="color__type--base-62">3 amazing partners. A Standard & Poor’s A+ rated insurance carrier for policies, Stripe for payments, and Amazon for hosting.</p>
     </article>
@@ -40,4 +40,38 @@ layout: default
   <footer>
     <p>Questions? Check out the <a>FAQs</a>.</p>
   </footer>
+</section>
+<section id="packages" class="color__bg--base-5">
+  <section class="wrapper type__align--center">
+    <header>
+      <h2 class="type__style--caps color__type--base-50">Packages</h2>
+    </header>
+    <section class="packages">
+      <section class="package">
+        <h3 class="color__type--highlight">Grab & Go</h3>
+        <p class="color__type--base-75"><strong>$250,000–$1,000,000 Policy</strong></p>
+        <p>Best for users who need coverage for a few flights per year.</p>
+        <a class="btn" href="{{ site.baseurl }}/buy">Buy Now</a>
+        <small class="color__type--base-50">Starting at $1.99 per flight</small>
+      </section>
+      <section class="package">
+        <h3 class="color__type--highlight">Frequent Flyer</h3>
+        <p class="color__type--base-75"><strong>$1,000,000–$3,000,000 Policy</strong></p>
+        <p>Unlimited flights, easy pricing, ultimate coverage.</p>
+        <a class="btn" href="{{ site.baseurl }}/buy">Buy Now</a>
+        <small class="color__type--base-50">Starting at $29.99 per year</small>
+      </section>
+    </section>
+  </section>
+</section>
+<section id="partners" class="wrapper type__align--center">
+  <header>
+    <h2 class="type__style--caps color__type--base-50">Our Partners</h2>
+    <p class="type__align--legible">We work with world class partners to deliver the best possible service we can.</p>
+  </header>
+  <section class="partners">
+    <a href="http://stripe.com/" target="_blank"><img class="lazy" data-src="{{ site.baseurl }}/assets/img/stripe.svg"></a>
+    <a href="http://www.swissre.com/about_us/" target="_blank"><img class="lazy" data-src="{{ site.baseurl }}/assets/img/s&p.jpg"></a>
+    <a href="http://aws.amazon.com/" target="_blank"><img class="lazy" data-src="{{ site.baseurl }}/assets/img/aws.svg"></a>
+  </section>
 </section>

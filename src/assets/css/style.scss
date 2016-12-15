@@ -107,6 +107,8 @@ nav[role="secondary"] a {
   }
   &__content {
     h2 { color: $color-base-50; }
+    > * + h3 { @include margin(l); }
+    h3 + p { @include margin(xs); }
   }
 }
 
@@ -195,7 +197,12 @@ nav[role="secondary"] a {
 
 .team__member {
   @include margin(m);
+  @include padding(s);
   display: flex;
+  background-color: $color-tint;
+  border: $border-s $color-base-12;
+  border-radius: $space-xs;
+  box-shadow: 0 rem(16) rem(32) rem(-16) rgba($color-shade,0.25);
   @include bp(xs) { flex-wrap: wrap; }
   &--img {
     flex: 0 0 auto;
@@ -213,6 +220,7 @@ nav[role="secondary"] a {
     flex-grow: 1;
     @include bp(xs) { @include margin(s); }
     @include bp(s) { @include padding(m,l); }
+    h3 + p { margin-top: 0; }
     p { @include margin(xs); }
   }
 }
@@ -266,4 +274,44 @@ nav[role="secondary"] a {
     img { height: rem(88); }
   }
   * + * { @include margin(s); }
+}
+
+#packages { border-top: $border-s $color-base-12; }
+
+.packages {
+  @include margin(m);
+  @include bp(s) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.package {
+  @include padding(s);
+  background-color: $color-tint;
+  border: $border-s $color-base-12;
+  border-radius: $space-xs;
+  box-shadow: 0 rem(16) rem(32) rem(-16) rgba($color-shade,0.25);
+  margin: 0 $space-s;
+  @include bp(xs) { @include margin(s); }
+  > * { @include margin(xs); }
+  small {
+    @include margin(s);
+    display: block;
+  }
+}
+
+.partners {
+  @include margin(s);
+  @include bp(s) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  a {
+    @include padding(s);
+    @include bp(xs) { display: block; }
+    &:hover { opacity: 0.75; }
+  }
+  img { height: rem(60); }
 }

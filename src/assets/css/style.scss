@@ -6,10 +6,60 @@ $color-highlight: #007CE3;
 
 @import "start";
 
+// Type
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/proxima-nova/proxima-nova-regular.woff');
+  src: url('../fonts/proxima-nova/proxima-nova-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/proxima-nova/proxima-nova-italic.woff');
+  src: url('../fonts/proxima-nova/proxima-nova-italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/proxima-nova/proxima-nova-semibold.woff');
+  src: url('../fonts/proxima-nova/proxima-nova-semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/proxima-nova/proxima-nova-semibold-italic.woff');
+  src: url('../fonts/proxima-nova/proxima-nova-semibold-italic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/proxima-nova/proxima-nova-bold.woff');
+  src: url('../fonts/proxima-nova/proxima-nova-bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/proxima-nova/proxima-nova-bold-italic.woff');
+  src: url('../fonts/proxima-nova/proxima-nova-bold-italic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
 // Vertical rythmn 
 
 * + {
-  p, h2 { @include margin(m); }
+  p, h2, ul, h3 { @include margin(m); }
   hr { @include margin(s); }
 }
 
@@ -19,10 +69,16 @@ header[role="main"] > .wrapper:first-child {
   align-items: center;
   justify-content: space-between;
   > * { @include bp(xs) { flex-grow: 1; } }
-  .logo svg {
-    @include bp(xs) {
-      height: rem(36);
-      width: auto;
+  .logo {
+    &:focus {
+      outline: none;
+      transform: scale(1.0625);
+    }
+    svg {
+      @include bp(xs) {
+        height: rem(36);
+        width: auto;
+      }
     }
   }
   nav[role="main"] { @include bp(xs) { @include margin(s); } }
@@ -52,9 +108,10 @@ nav[role="main"] a {
     border-color: $color-base-25;
     color: $color-base;
   }
-  &:hover {
+  &:hover, &:focus {
     color: $color-highlight;
     border-color: $color-highlight;
+    outline: none;
   }
   + a { @include margin(s,l); }
 }
@@ -90,9 +147,10 @@ nav[role="secondary"] a {
   @include type-caps;
   border-bottom: $border-s transparent;
   color: $color-base-38;
-  &:hover {
+  &:hover, &:focus {
     color: $color-base-50;
     border-color: $color-base-25;
+    outline: none;
   }
   + a { @include margin(xs,l); }
 }
@@ -107,7 +165,6 @@ nav[role="secondary"] a {
   }
   &__content {
     h2 { color: $color-base-50; }
-    > * + h3 { @include margin(l); }
     h3 + p { @include margin(xs); }
   }
 }
@@ -143,7 +200,6 @@ nav[role="secondary"] a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    h3 { color: $color-base-50; }
     a {
       @include inline;
       color: $color-highlight;
@@ -170,28 +226,15 @@ nav[role="secondary"] a {
       background-color: $color-highlight-5;
     }
   }
-  &__footer {
-    @include padding(s);
-    color: $color-base-38;
-  }
+  &__footer { @include padding(s); }
   &__price {
     @include type-l;
     font-weight: normal;
   }
-  &__submit {
-    @include smooth;
-    @include type-m;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: $space-s;
-    background-color: $color-highlight;
-    background-image: linear-gradient(to bottom, rgba($color-highlight,0), $color-highlight-dark);
-    color: $color-tint;
-    box-shadow: 0 rem(16) rem(32) rem(-16) rgba($color-shade,0.5);
+  input[type="submit"] {
+    display: block;
+    border-radius: 0;
     width: 100%;
-    &:hover { background-color: $color-highlight-dark; }
-    svg { margin-right: $space-s; }
   }
 }
 
@@ -287,12 +330,12 @@ nav[role="secondary"] a {
 }
 
 .package {
-  @include padding(s);
   background-color: $color-tint;
   border: $border-s $color-base-12;
   border-radius: $space-xs;
   box-shadow: 0 rem(16) rem(32) rem(-16) rgba($color-shade,0.25);
   margin: 0 $space-s;
+  padding: $space-s $space-l;
   @include bp(xs) { @include margin(s); }
   > * { @include margin(xs); }
   small {
@@ -306,12 +349,28 @@ nav[role="secondary"] a {
   @include bp(s) {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   a {
     @include padding(s);
     @include bp(xs) { display: block; }
     &:hover { opacity: 0.75; }
   }
-  img { height: rem(60); }
+  img { height: rem(48); }
+}
+
+.has--info {
+  svg { cursor: pointer; }
+  .deets {
+    @include padding(xs);
+    display: none;
+    background-color: $color-highlight-5;
+    border: $border-s $color-base-12;
+    box-shadow: 0 rem(4) rem(8) rem(-4) rgba($color-shade,0.25);
+    position: absolute;
+    right: 0;
+    max-width: 100%;
+    transform: translateY($space-xs);
+  }
+  &-shown .deets { display: block; }
 }

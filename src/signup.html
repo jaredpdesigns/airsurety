@@ -1,0 +1,37 @@
+---
+layout: default
+title: 'Create Your Account'
+---
+<section class="wrapper">
+  <form id="signup" class="form__simple" action="{{ site.baseurl }}/thanks" method="post">
+    <header class="type__align--center">
+      <h3 class="type__color--base-50">Create Your Account</h3>
+    </header>
+    <fieldset>
+      <label for="company"><h5>Company</h5></label>
+      <input name="company" for="company" type="text" placeholder="ex. Vandaley Industries" required>
+    </fieldset>
+    <fieldset>
+      <label for="contact"><h5>Contact Name</h5></label>
+      <input name="contact" for="contact" type="text" placeholder="ex. Art Vandaley" required>
+    </fieldset>
+    <fieldset>
+      <label for="email"><h5>Email Address</h5></label>
+      <input name="email" for="email" type="email" placeholder="ex. name@email.com" required>
+    </fieldset>
+    <fieldset>
+      <label for="password"><h5>Password</h5></label>
+      <input name="password" for="password" type="password" placeholder="ex. I<3tofly" required>
+    </fieldset>
+    <fieldset>
+      <label for="confirm-password"><h5>Confirm Password</h5></label>
+      <input name="confirm-password" for="confirm-password" type="password" placeholder="ex. I<3tofly" required>
+    </fieldset>
+    <section class="type__align--center">
+      <input type="submit" value="Sign-Up">
+    </section>
+    <footer class="type__align--center">
+      <p class="type__align--legible"><small>By clicking “SIGN-UP” you agree with our <a href="{{ site.baseurl }}/terms">Terms of Service</a></small></p>
+    </footer>
+  </form>
+</section>

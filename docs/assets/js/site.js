@@ -77,3 +77,7 @@ $('#grab-go').click(function() {
 $('#frequent-flyer').click(function() {
   $('#flights, #additional-flights').addClass('is__hidden');
 });
+
+$('.has--info svg').click(function() {
+  $(this).parent().toggleClass('has--info-shown');
+});

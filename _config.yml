@@ -1,4 +1,5 @@
 title: 'Airsurety'
+description: 'Instant coverage for airplane flights'
 baseurl: "/airsurety"
 url: "http://jaredpdesigns.github.io/airsurety"
 keep_files: [.git, "CNAME"]

@@ -2,26 +2,33 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ site.title }}</title>
+  <title>{% if page.url == '/' %}{{ site.title }} | {{ site.description }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
   <link rel="stylesheet" href="{{ "/assets/css/style.css" | prepend: site.baseurl }}">
+  <link rel="shortcut icon" href="{{ "/assets/img/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon">
+  <link rel="mask-icon" href="{{ "/assets/img/website_icon.svg" | prepend: site.baseurl }}" color="#007CE3">
+  <meta property="og:site_name" content="{{ site.title }}"/>
+  <meta property="og:title" content="{{ site.title }}"/>
+  <meta property="og:description" content="{% if page.url == '/' %}{{ site.description }}{% else %}{{ page.title }}{% endif %}"/>
+  <meta property="og:url" content="{{ site.url }}"/>
+  <meta property="og:image" content="{{ "/assets/img/social/social.jpg" | prepend: site.url }}"/>
 </head>
 <body>
 {% if page.url == '/' %}
 <header role="main" class="home" style="background-image: url('{{ site.baseurl }}/assets/img/header-background.jpg')">
   <section class="wrapper wrapper--short">
-    <a href="{{ site.baseurl }}/" class="logo type__align--center color__type--white">{% include svg/logo.svg %}</a>
+    <a href="{{ site.baseurl }}/" class="logo type__align--center color__type--white" alt="{{ site.title }} Logo">{% include svg/logo.svg %}</a>
     <nav role="main" class="type__align--center">
       <a href="{{ site.baseurl }}/#how-it-works">How It Works</a>
       <a href="{{ site.baseurl }}/#packages">Packages</a>
       <a href="{{ site.baseurl }}/#partners">Partners</a>
       <a href="{{ site.baseurl }}/corporate">Corporate</a>
-      <a>Login</a>
+      <a href="{{ site.baseurl }}/login">Login</a>
     </nav>
   </section>
   <section class="home__callout">
     <section class="wrapper wrapper--fluffy type__align--center color__type--white">
-      <h1>Instant coverage for airplane flights!</h1>
-      <a href="{{ site.baseurl }}/buy" class="btn">Get Coverage</a>
+      <h1>{{ site.description }}</h1>
+      <a href="{{ site.baseurl }}/buy" class="btn">Buy Coverage</a>
       <a href="{{ site.baseurl }}/#how-it-works" class="btn">Learn More</a>
     </section>
   </section>
@@ -35,7 +42,7 @@
       <a href="{{ site.baseurl }}/#packages">Packages</a>
       <a href="{{ site.baseurl }}/#partners">Partners</a>
       <a href="{{ site.baseurl }}/corporate">Corporate</a>
-      <a>Login</a>
+      <a href="{{ site.baseurl }}/login">Login</a>
     </nav>
   </section>
 </header>

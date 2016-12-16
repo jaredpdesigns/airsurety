@@ -116,15 +116,18 @@ ul li { list-style-type: disc; }
 
 a { @include smooth; }
 
-p a:not(.btn) {
+p a:not(.btn), li a, small a {
   color: $color-highlight;
   border-bottom: $border-s $color-highlight-50;
-  &:hover { color: $color-highlight-75; }
+  &:hover, &:focus {
+    color: $color-highlight-75;
+    outline: none;
+  }
 }
 
 // Forms
 
-input, input[type="email"], input[type="number"], input[type="password"],
+input[type="text"], input[type="email"], input[type="number"], input[type="password"],
 input[type="search"], input[type="tel"], input[type="text"], input[type="url"],
 input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"],
 input[type="month"], input[type="time"], input[type="week"], select, textarea {
@@ -185,17 +188,19 @@ label h5 { @include type-xxs; }
     &.is__small { @include bp(s) { flex-basis: $grid-1-4; } }
     &.is__big { @include bp(s)  { flex-basis: $grid-1-2; } }
     &.is__full { @include bp(s)  { flex-basis: 100%; } }
-    label {
-      color: $color-base-62;
-      + * { margin-top: $space-xs; }
-    }
   }
+}
+
+fieldset label {
+  color: $color-base-62;
+  + * { margin-top: $space-xs; }
 }
 
 .form__group {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -$space-xs;
+  margin-left: -$space-xs;
+  margin-right: -$space-xs;
   &--item {
     margin-left: $space-xs;
     margin-right: $space-xs;
@@ -204,6 +209,16 @@ label h5 { @include type-xxs; }
     position: relative;
     @include bp(s) { flex-basis: 25%; }
   }
+}
+
+.form__simple {
+  @include padding(m);
+  border: $border-s $color-base-12;
+  border-radius: $space-xs;
+  box-shadow: 0 rem(16) rem(32) rem(-16) rgba($color-shade,0.25);
+  margin: 0 auto;
+  max-width: rem(480);
+  > * + * { @include margin(m); }
 }
 
 // Colors
@@ -229,8 +244,8 @@ label h5 { @include type-xxs; }
 .color__bg--highlight-dark { background-color: $color-highlight-dark; }
 
 .color__bg--gradient {
-  background-color: $color-highlight;
-  background-image: linear-gradient(to bottom, $color-highlight, rgba($color-highlight-alt,0.625));
+  background-color: $color-highlight-alt;
+  background-image: linear-gradient(to bottom, $color-highlight, rgba($color-highlight,0.25));
   border-color: $color-highlight;
 }
 
@@ -291,19 +306,27 @@ label h5 { @include type-xxs; }
   }
 }
 
-.btn {
+.btn, input[type="submit"] {
+  @include smooth;
   @include inline;
-  @include padding(xs);
-  @include type-s;
+  @include type-xs;
+  @include type-caps;
   border: $border-s $color-highlight;
   background-color: $color-highlight-alt;
-  background-image: linear-gradient(to bottom, rgba($color-highlight,0), $color-highlight);
+  background-image: linear-gradient(to bottom, $color-highlight, rgba($color-highlight,0.25));
   color: $color-tint;
   border-radius: $space-xs;
-  box-shadow: 0 rem(8) rem(16) rem(-8) rgba($color-shade,0.5);
-  &:hover {
+  box-shadow: 0 rem(8) rem(16) rem(-8) rgba($color-shade,0.25);
+  font-weight: 600;
+  max-height: rem(48);
+  padding: $space-xs;
+  @include bp(xl) {
+    padding: $space-xs $space-s;
+    padding-top: rem(10);
+  }
+  &:hover, &:focus {
     background-color: $color-highlight;
-    box-shadow: 0 rem(4) rem(8) rem(-4) rgba($color-shade,0.75);
+    box-shadow: 0 rem(4) rem(8) rem(-4) rgba($color-shade,0.375);
   }
   + .btn { @include margin(s,l); }
 }

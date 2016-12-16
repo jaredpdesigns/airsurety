@@ -262,7 +262,10 @@ nav[role="secondary"] a {
   &--content {
     flex-grow: 1;
     @include bp(xs) { @include margin(s); }
-    @include bp(s) { @include padding(m,l); }
+    @include bp(s) {
+      @include padding(m);
+      @include padding(s,t);
+    }
     h3 + .team__member--title { margin-top: 0; }
     p { @include margin(xs); }
   }
